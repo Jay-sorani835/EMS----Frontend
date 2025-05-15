@@ -16,7 +16,7 @@ const ChangePassword = () => {
     }
     const email = "admin@admin.com.in"
     try {
-      const response = await fetch("http://localhost:4000/api/admin/change-password", {
+      const response = await fetch("https://render.com/docs/web-services#port-binding/api/admin/change-password", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

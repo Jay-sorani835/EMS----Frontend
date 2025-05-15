@@ -8,7 +8,7 @@ function Logout() {
   useEffect(() => {
     const logout = async () => {
       try {
-        await axios.post("http://localhost:4000/api/admin/logout", null, {
+        await axios.post("https://render.com/docs/web-services#port-binding/api/admin/logout", null, {
           withCredentials: true,
         });
         navigate("/");

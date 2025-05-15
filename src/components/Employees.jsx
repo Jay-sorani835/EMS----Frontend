@@ -8,7 +8,7 @@ function Employees() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("http://localhost:4000/api/employees/all")
+    fetch("https://render.com/docs/web-services#port-binding/api/employees/all")
       .then((response) => response.json())
       .then((data) => setEmployees(data))
       .catch((error) => {
@@ -22,7 +22,7 @@ function Employees() {
     const updated = prompt("Update employee name", emp.name);
     if (updated && updated !== emp.name) {
       try {
-        await axios.put(`http://localhost:4000/api/employees/update/${emp.id}`, {
+        await axios.put(`https://render.com/docs/web-services#port-binding/api/employees/update/${emp.id}`, {
           ...emp,
           name: updated,
         });
@@ -44,7 +44,7 @@ function Employees() {
 
     try {
       const response = await fetch(
-        `http://localhost:4000/api/employees/${id}`,
+        `https://render.com/docs/web-services#port-binding/api/employees/${id}`,
         {
           method: "DELETE",
         }

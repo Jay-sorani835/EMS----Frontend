@@ -12,7 +12,7 @@ const Departments = () => {
   // Fetch departments
   const fetchDepartments = async () => {
     try {
-      const res = await axios.get("http://localhost:4000/api/departments/all", {
+      const res = await axios.get("https://render.com/docs/web-services#port-binding/api/departments/all", {
         withCredentials: true,
       });
       setDepartments(res.data);
@@ -31,7 +31,7 @@ const Departments = () => {
 
     try {
       const res = await axios.post(
-        "http://localhost:4000/api/departments/add",
+        "https://render.com/docs/web-services#port-binding/api/departments/add",
         { name },
         { withCredentials: true }
       );
@@ -49,7 +49,7 @@ const Departments = () => {
     if (newName && newName !== oldName) {
       try {
         await axios.put(
-          `http://localhost:4000/api/departments/edit/${id}`,
+          `https://render.com/docs/web-services#port-binding/api/departments/edit/${id}`,
           { name: newName },
           { withCredentials: true }
         );
@@ -70,7 +70,7 @@ const Departments = () => {
     if (window.confirm("Are you sure to delete this department?")) {
       try {
         await axios.delete(
-          `http://localhost:4000/api/departments/delete/${id}`,
+          `https://render.com/docs/web-services#port-binding/api/departments/delete/${id}`,
           { withCredentials: true }
         );
         setDepartments(departments.filter((d) => d.id !== id));
