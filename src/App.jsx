@@ -1,6 +1,5 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Logout  from "./components/logout";
 import Login from "./components/Login";
 import Departments from "./components/Department";
 import Employees from "./components/Employees";
@@ -8,6 +7,7 @@ import AddEmployee from "./components/AddEmployee";
 import Profile from "./components/Profile";
 import ChangePassword from "./components/ChangePassword";
 import Dashboard from "./components/Dashboard";
+import Logout  from "./components/Logout";
 
 function App() {
   return (
