@@ -25,7 +25,7 @@ function AddEmployee() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("https://render.com/docs/web-services#port-binding/api/employees/add", {
+      const response = await fetch("https://ems-backend-ylc6.onrender.com/api/employees/add", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -48,7 +48,7 @@ function AddEmployee() {
   //fetch all department
   const fetchDepartments = async () => {
     try {
-      const res = await axios.get("https://render.com/docs/web-services#port-binding/api/departments/all", {
+      const res = await axios.get("https://ems-backend-ylc6.onrender.com/api/departments/all", {
       });
       setDepartments(res.data);
     } catch (err) {
