@@ -1,0 +1,71 @@
+#root {
+  margin: 0;
+  padding: 0;
+}
+
+img{
+  width: 50px;
+  height: 50px;
+}
+.topbar-avatar-wrapper {
+  position: relative;
+  cursor: pointer;
+}
+
+.topbar-avatar {
+  width: 45px;
+  height: 45px;
+}
+
+.topbar-dropdown {
+  position: absolute;
+  top: 60px;
+  right: 0;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  min-width: 160px;
+  display: none;
+  z-index: 999;
+}
+
+.topbar-avatar-wrapper:hover .topbar-dropdown {
+  display: block;
+}
+
+.topbar-dropdown .dropdown-item {
+  padding: 10px 15px;
+  transition: background 0.2s;
+  border-bottom: 1px solid #eee;
+}
+
+.topbar-dropdown .dropdown-item:last-child {
+  border-bottom: none;
+}
+
+.topbar-dropdown .dropdown-item:hover {
+  background-color: #f8f9fa;
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
