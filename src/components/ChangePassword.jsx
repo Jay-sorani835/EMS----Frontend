@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 const ChangePassword = () => {
   const navigate = useNavigate();
   const [oldPassword, setOldPassword] = useState("");
-  const [newPassword, setNewPassword] = useState("");
+  const [Password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
   const handleSubmit = async (e) => {
@@ -23,7 +23,7 @@ const ChangePassword = () => {
         },
         body: JSON.stringify({
           oldPassword,
-          newPassword,
+          Password,
           confirmPassword,
           email
         }),
@@ -63,7 +63,7 @@ const ChangePassword = () => {
             className="form-control"
             placeholder="New Password"
             value={newPassword}
-            onChange={(e) => setNewPassword(e.target.value)}
+            onChange={(e) => setPassword(e.target.value)}
             required
           />
         </div>
