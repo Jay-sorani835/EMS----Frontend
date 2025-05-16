@@ -61,7 +61,7 @@ const ChangePassword = () => {
             type="password"
             className="form-control"
             placeholder="New Password"
-            value={newPassword}
+            value={Password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
