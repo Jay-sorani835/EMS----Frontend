@@ -28,7 +28,7 @@ const Profile = () => {
             <ul className="list-group list-group-flush">
               <li className="list-group-item">
                 <FaEnvelope className="me-2 text-primary" />
-                <strong>Email:</strong> admin@admin.com.in
+                <strong>Email:</strong> admin@admin.com
               </li>
               <li className="list-group-item">
                 <FaPhone className="me-2 text-success" />

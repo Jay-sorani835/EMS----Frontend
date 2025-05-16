@@ -13,7 +13,7 @@ const Dashboard = () => {
 
   const handleLogout = async () => {
     try {
-      await axios.post("https://ems-backend-ylc6.onrender.com/api/admin/logout", null, {
+      await axios.post("https://ems-backend-l1aj.onrender.com/api/admin/logout", null, {
         withCredentials: true,
       });
       navigate("/");
@@ -24,7 +24,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     const fetchEmployee = async () => {
-      fetch("https://ems-backend-ylc6.onrender.com/api/employees/all")
+      fetch("https://ems-backend-l1aj.onrender.com/api/employees/all")
         .then((response) => response.json())
         .then((data) => getEmployees(data))
         .catch((error) => {
@@ -34,7 +34,7 @@ const Dashboard = () => {
     };
     const fetchRecent = async () => {
       try {
-        const res = await axios.get("https://ems-backend-ylc6.onrender.com/api/employees/recent");
+        const res = await axios.get("https://ems-backend-l1aj.onrender.com/api/employees/recent");
         setRecentEmployees(res.data);
       } catch (err) {
         console.error("Error fetching recent employees", err);
@@ -43,7 +43,7 @@ const Dashboard = () => {
 
     const fetchDepartments = async () => {
       try {
-        const res = await axios.get("https://ems-backend-ylc6.onrender.com/api/departments/all", {
+        const res = await axios.get("https://ems-backend-l1aj.onrender.com/api/departments/all", {
           withCredentials: true,
         });
         setDepartments(res.data);

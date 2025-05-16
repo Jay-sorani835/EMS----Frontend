@@ -12,7 +12,7 @@ const Departments = () => {
   // Fetch departments
   const fetchDepartments = async () => {
     try {
-      const res = await axios.get("https://ems-backend-ylc6.onrender.com/api/departments/all", {
+      const res = await axios.get("https://ems-backend-l1aj.onrender.com/api/departments/all", {
         withCredentials: true,
       });
       setDepartments(res.data);
@@ -31,7 +31,7 @@ const Departments = () => {
 
     try {
       const res = await axios.post(
-        "https://ems-backend-ylc6.onrender.com/api/departments/add",
+        "https://ems-backend-l1aj.onrender.com/api/departments/add",
         { name },
         { withCredentials: true }
       );
@@ -49,7 +49,7 @@ const Departments = () => {
     if (newName && newName !== oldName) {
       try {
         await axios.put(
-          `https://ems-backend-ylc6.onrender.com/api/departments/edit/${id}`,
+          `https://ems-backend-l1aj.onrender.com/api/departments/edit/${id}`,
           { name: newName },
           { withCredentials: true }
         );
@@ -70,7 +70,7 @@ const Departments = () => {
     if (window.confirm("Are you sure to delete this department?")) {
       try {
         await axios.delete(
-          `https://ems-backend-ylc6.onrender.com/api/departments/delete/${id}`,
+          `https://ems-backend-l1aj.onrender.com/api/departments/delete/${id}`,
           { withCredentials: true }
         );
         setDepartments(departments.filter((d) => d.id !== id));

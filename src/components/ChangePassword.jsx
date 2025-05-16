@@ -16,7 +16,7 @@ const ChangePassword = () => {
     }
     const email = "admin@admin.com.in"
     try {
-      const response = await fetch("https://ems-backend-ylc6.onrender.com/api/admin/change-password", {
+      const response = await fetch("https://ems-backend-l1aj.onrender.com/api/admin/change-password", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
