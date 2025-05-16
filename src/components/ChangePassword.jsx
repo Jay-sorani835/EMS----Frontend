@@ -24,7 +24,6 @@ const ChangePassword = () => {
         body: JSON.stringify({
           oldPassword,
           Password,
-          confirmPassword,
           email
         }),
       });
