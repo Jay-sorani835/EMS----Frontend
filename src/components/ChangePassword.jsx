@@ -10,7 +10,7 @@ const ChangePassword = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (newPassword !== confirmPassword) {
+    if (Password !== confirmPassword) {
       alert("New password and confirm password do not match.");
       return;
     }
