@@ -14,7 +14,7 @@ const ChangePassword = () => {
       alert("New password and confirm password do not match.");
       return;
     }
-    const email = "admin@admin.com.in"
+    const email = "admin@admin.com"
     try {
       const response = await fetch("https://ems-backend-l1aj.onrender.com/api/admin/change-password", {
         method: "PUT",
