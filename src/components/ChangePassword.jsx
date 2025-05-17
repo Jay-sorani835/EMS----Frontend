@@ -4,13 +4,13 @@ import { useNavigate } from "react-router-dom";
 const ChangePassword = () => {
   const navigate = useNavigate();
   const [oldPassword, setOldPassword] = useState("");
-  const [Password, setPassword] = useState("");
+  const [newPassword, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (Password !== confirmPassword) {
+    if (newPassword !== confirmPassword) {
       alert("New password and confirm password do not match.");
       return;
     }
@@ -23,7 +23,7 @@ const ChangePassword = () => {
         },
         body: JSON.stringify({
           oldPassword,
-          Password,
+          newPassword,
           email
         }),
       });
@@ -61,7 +61,7 @@ const ChangePassword = () => {
             type="password"
             className="form-control"
             placeholder="New Password"
-            value={Password}
+            value={newPassword}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
