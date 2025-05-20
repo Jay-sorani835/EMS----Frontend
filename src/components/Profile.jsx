@@ -35,7 +35,7 @@ const Profile = () => {
                 <strong>Mobile:</strong> 1231231231
               </li>
               <li className="list-group-item">
-                <FaVenusMars className="me-2 text-danger" />
+                
                 <strong>Gender:</strong> Male
               </li>
             </ul>
