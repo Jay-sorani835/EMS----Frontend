@@ -57,7 +57,7 @@ function EmployeeList() {
           console.error("Response status:", error.response.status);
 
           if (error.response.status === 401) {
-            alert("Incorrect password");
+            alert("Incorrect password or Email");
           } else if (error.response.status === 404) {
             alert("User not with found");
           } else {
