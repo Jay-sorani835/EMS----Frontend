@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Button } from "react-bootstrap";
+import { Button, Modal, Form } from "react-bootstrap";
 import { FaEdit, FaTrash } from "react-icons/fa";
+import axios from "axios";
 import "./login1.css";
+
 function Employees() {
   const [employees, setEmployees] = useState([]);
+  const [showEditModal, setShowEditModal] = useState(false);
+  const [selectedEmployee, setSelectedEmployee] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -17,25 +21,35 @@ function Employees() {
       });
   }, []);
 
-  //edit employee data
-  const handleEdit = async (emp) => {
-    const updated = prompt("Update employee name", emp.name);
-    if (updated && updated !== emp.name) {
-      try {
-        await axios.put(`https://ems-backend-l1aj.onrender.com/api/employees/update/${emp.id}`, {
-          ...emp,
-          name: updated,
-        });
-        setEmployees(
-          employees.map((e) => (e.id === emp.id ? { ...e, name: updated } : e))
-        );
-      } catch {
-        alert("Edit failed");
-      }
+  const handleEdit = (emp) => {
+    setSelectedEmployee({ ...emp });
+    setShowEditModal(true);
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setSelectedEmployee((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSaveChanges = async () => {
+    try {
+      await axios.put(
+        `https://ems-backend-l1aj.onrender.com/api/employees/update/${selectedEmployee.id}`,
+        selectedEmployee
+      );
+      setEmployees((prev) =>
+        prev.map((emp) =>
+          emp.id === selectedEmployee.id ? selectedEmployee : emp
+        )
+      );
+      setShowEditModal(false);
+      alert("Employee updated successfully!");
+    } catch (err) {
+      console.error(err);
+      alert("Update failed");
     }
   };
 
-  //deleting data
   const handleDelete = async (id) => {
     const confirm = window.confirm(
       "Are you sure you want to delete this employee?"
@@ -121,12 +135,101 @@ function Employees() {
             ))}
           </tbody>
         </table>
+
         <div className="mt-3 text-end">
-                  <Button variant="secondary" onClick={() => navigate("/dashboard")}>
-                    Go to Dashboard
-                  </Button>
-                </div>
+          <Button variant="secondary" onClick={() => navigate("/dashboard")}>
+            Go to Dashboard
+          </Button>
+        </div>
       </div>
+
+      {/* Edit Modal */}
+      <Modal show={showEditModal} onHide={() => setShowEditModal(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>Edit Employee</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          {selectedEmployee && (
+            <Form>
+              <Form.Group controlId="fname">
+                <Form.Label>First Name</Form.Label>
+                <Form.Control
+                  type="text"
+                  name="fname"
+                  value={selectedEmployee.fname}
+                  onChange={handleInputChange}
+                />
+              </Form.Group>
+              <Form.Group controlId="lname">
+                <Form.Label>Last Name</Form.Label>
+                <Form.Control
+                  type="text"
+                  name="lname"
+                  value={selectedEmployee.lname}
+                  onChange={handleInputChange}
+                />
+              </Form.Group>
+              <Form.Group controlId="email">
+                <Form.Label>Email</Form.Label>
+                <Form.Control
+                  type="email"
+                  name="email"
+                  value={selectedEmployee.email}
+                  onChange={handleInputChange}
+                />
+              </Form.Group>
+              <Form.Group controlId="mobile">
+                <Form.Label>Phone</Form.Label>
+                <Form.Control
+                  type="text"
+                  name="mobile"
+                  value={selectedEmployee.mobile}
+                  onChange={handleInputChange}
+                />
+              </Form.Group>
+              <Form.Group controlId="gender">
+                <Form.Label>Gender</Form.Label>
+                <Form.Control
+                  as="select"
+                  name="gender"
+                  value={selectedEmployee.gender}
+                  onChange={handleInputChange}
+                >
+                  <option>Male</option>
+                  <option>Female</option>
+                  <option>Other</option>
+                </Form.Control>
+              </Form.Group>
+              <Form.Group controlId="password">
+                <Form.Label>Password</Form.Label>
+                <Form.Control
+                  type="text"
+                  name="password"
+                  value={selectedEmployee.password}
+                  onChange={handleInputChange}
+                />
+              </Form.Group>
+              <Form.Group controlId="department">
+                <Form.Label>Department</Form.Label>
+                <Form.Control
+                  type="text"
+                  name="department"
+                  value={selectedEmployee.department}
+                  onChange={handleInputChange}
+                />
+              </Form.Group>
+            </Form>
+          )}
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={() => setShowEditModal(false)}>
+            Cancel
+          </Button>
+          <Button variant="primary" onClick={handleSaveChanges}>
+            Save Changes
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </>
   );
 }
