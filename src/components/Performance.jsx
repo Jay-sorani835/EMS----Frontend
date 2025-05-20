@@ -8,12 +8,10 @@ const Performance = () => {
   const [form, setForm] = useState({ employee: '', rating: '', feedback: '' });
 
   const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+    setForm({ form, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    const newReview = { id: Date.now(), ...form };
     setReviews([...reviews, newReview]);
     setForm({ employee: '', rating: '', feedback: '' });
   };
