@@ -8,12 +8,15 @@ import Profile from "./components/Profile";
 import ChangePassword from "./components/ChangePassword";
 import Dashboard from "./components/Dashboard";
 import Logout  from "./components/Logout";
+import AttendanceLeave from "./components/AttendanceLeave";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Login />} />
+        <Route path="/attendance" element={<AttendanceLeave/>}/>
+        <Route path="/performance" element={<Performance/>}/>_
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/departments" element={<Departments />} />
         <Route path="/employees" element={<Employees />} />
